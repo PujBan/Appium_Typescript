@@ -1,0 +1,10 @@
+hs_err_pid*
+
+replay_pid*
+
+ 
+
+node_modules
+allure-results
+allure-report
+env
