@@ -4,7 +4,7 @@ import { expect } from 'chai';
 
 describe('Login', ()=>{
 
-    it('1. Success Login', async()=>{
+    it('5. Success Login', async()=>{
 
         //click on login menu
         await signUpPO.loginMenu.click();
@@ -23,6 +23,7 @@ describe('Login', ()=>{
         
 
         //Verify Success Message
-        expect (await LoginPo.successLoginMessage.getText()).to.be.true('You are logged in!')
+        expect (await LoginPo.successLoginMessage.getText()).to.equal('You are logged in!')
+        
     })
 })
