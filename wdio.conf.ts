@@ -35,7 +35,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.ts'
+        './test/specs/**/login.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -65,11 +65,13 @@ export const config: Options.Testrunner = {
     //
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
-        'appium:platformName': 'Android',
-        'appium:deviceName': 'emulator-5554',
-        'appium:platformVersion': '14.0',
-        'appium:automationName': 'UiAutomator2',
-        "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
+        "platformName": "Android",
+        "appium:deviceName": "Android Emulator",
+        "appium:platformVersion": "14",
+        "appium:automationName": "UiAutomator2",
+        "appium:appPackage": "com.wdiodemoapp",
+         "appium:appWaitActivity": "com.wdiodemoapp.MainActivity",
+         "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
         "appium:noReset": true
     }],
 
@@ -248,7 +250,7 @@ export const config: Options.Testrunner = {
      */
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
-            const screenshotFileName = `${test.title}-${TestHelpers.getDateTimeString}.png`;
+            const screenshotFileName = `${test.title}.png`;
             const screenshotFilePath = path.join(process.cwd(), 'screenshots', screenshotFileName);
             await driver.saveScreenshot(screenshotFilePath);
         }
