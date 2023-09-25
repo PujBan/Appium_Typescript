@@ -7,7 +7,4 @@ replay_pid*
 node_modules
 allure-results
 allure-report
-.env
 screenshots
-wdio.conf-BS-Android.ts
-wdio.conf-BS-IOS.ts
