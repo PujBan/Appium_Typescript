@@ -65,22 +65,22 @@ export const config: Options.Testrunner = {
     //
     capabilities: [{
         //capabilities for local Appium web tests on an Android Emulator
-        "platformName": "Android",
-        "appium:deviceName": "Android Emulator",
-        "appium:platformVersion": "14",
-        "appium:automationName": "UiAutomator2",
-        "appium:appPackage": "com.wdiodemoapp",
-         "appium:appWaitActivity": "com.wdiodemoapp.MainActivity",
-         "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
-        "appium:noReset": true
         // "platformName": "Android",
-        // "appium:deviceName": "RZ8R10REF5E",
-        // "appium:platformVersion": "11",
+        // "appium:deviceName": "Android Emulator",
+        // "appium:platformVersion": "14",
         // "appium:automationName": "UiAutomator2",
         // "appium:appPackage": "com.wdiodemoapp",
         //  "appium:appWaitActivity": "com.wdiodemoapp.MainActivity",
         //  "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
         // "appium:noReset": true
+        "platformName": "Android",
+        "appium:deviceName": "RZ8R10REF5E",
+        "appium:platformVersion": "11",
+        "appium:automationName": "UiAutomator2",
+        "appium:appPackage": "com.wdiodemoapp",
+         "appium:appWaitActivity": "com.wdiodemoapp.MainActivity",
+         "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
+        "appium:noReset": true
     }],
 
     //
