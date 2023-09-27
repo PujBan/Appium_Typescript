@@ -1,5 +1,5 @@
 import signUpPO from "../pageobjects/signUpPo";
-import LoginPo from "../pageobjects/loginPo";
+import LoginPo from "../pageobjects/loginPO";
 import { expect } from 'chai';
 
 describe('Login', ()=>{

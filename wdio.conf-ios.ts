@@ -9,14 +9,13 @@ export const config: Options.Testrunner = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-   // autoCompileOpts: {
+    // autoCompileOpts: {
     //     autoCompile: true,
     //     tsNodeOpts: {
     //         project: './tsconfig.json',
     //         transpileOnly: true
     //     }
     // },
-    
     
     port: 4723,
     //
@@ -65,23 +64,14 @@ export const config: Options.Testrunner = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        //capabilities for local Appium web tests on an Android Emulator
-        // "platformName": "Android",
-        // "appium:deviceName": "Android Emulator",
-        // "appium:platformVersion": "14",
-        // "appium:automationName": "UiAutomator2",
-        // "appium:appPackage": "com.wdiodemoapp",
-        //  "appium:appWaitActivity": "com.wdiodemoapp.MainActivity",
-        //  "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
-        // "appium:noReset": true
-        "platformName": "Android",
-        "appium:deviceName": "RZ8R10REF5E",
-        "appium:platformVersion": "11",
-        "appium:automationName": "UiAutomator2",
-        "appium:appPackage": "com.wdiodemoapp",
-         "appium:appWaitActivity": "com.wdiodemoapp.MainActivity",
-         "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
-        "appium:noReset": true
+        // capabilities for local Appium web tests on an Android Emulator
+        "platformName": "iOS",
+        "appium:deviceName": "iPhone SE (3rd generation)",
+        "appium:platformVersion": "15.5",
+        "appium:automationName": "XCUITest",
+        "appium:app" : path.join(process.cwd(), 'app/wdioNativeDemoApp.app'),
+        "appium:noReset": true,
+        //"networkConnectionEnabled": true
     }],
 
     //

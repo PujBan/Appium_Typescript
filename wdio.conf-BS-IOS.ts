@@ -59,7 +59,7 @@ export const config: Options.Testrunner = {
         "appium:deviceName": "i Phone 13",
         "appium:platformVersion": "17",
         "appium:automationName": "XCUITest",
-         "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
+        "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
         "appium:noReset": true
     }],
 
