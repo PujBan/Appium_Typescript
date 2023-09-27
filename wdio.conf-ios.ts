@@ -3,12 +3,22 @@ const path = require('path');
 import { driver } from '@wdio/globals'
 import TestHelpers from './test/utils/helper'
 export const config: Options.Testrunner = {
-   //
-    // ==================
-    // Browser stack credentails
-      // ==================
-      user : process.env.BROWSERSTACK_USER,
-      key : process.env.BROWSERSTACK_KEY,
+    //
+    // ====================
+    // Runner Configuration
+    // ====================
+    // WebdriverIO supports running e2e tests as well as unit and component tests.
+    runner: 'local',
+    // autoCompileOpts: {
+    //     autoCompile: true,
+    //     tsNodeOpts: {
+    //         project: './tsconfig.json',
+    //         transpileOnly: true
+    //     }
+    // },
+    
+    port: 4723,
+    //
     // ==================
     // Specify Test Files
     // ==================
@@ -25,7 +35,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/signUp.ts'
+        './test/specs/**/network.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -110,8 +120,7 @@ export const config: Options.Testrunner = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    //services: ['appium'],
-    services: ['browserstack'],
+    services: ['appium'],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

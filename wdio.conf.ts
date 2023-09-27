@@ -9,13 +9,14 @@ export const config: Options.Testrunner = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    // autoCompileOpts: {
+   // autoCompileOpts: {
     //     autoCompile: true,
     //     tsNodeOpts: {
     //         project: './tsconfig.json',
     //         transpileOnly: true
     //     }
     // },
+    
     
     port: 4723,
     //

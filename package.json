@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "wdio": "wdio run ./wdio.conf.ts",
+    "wdioI": "wdio run ./wdio.conf-ios.ts",
     "wdioBsI": "wdio run ./wdio.conf-BS-IOS.ts",
     "wdioBsA": "wdio run ./wdio.conf-BS-Android.ts"
   },

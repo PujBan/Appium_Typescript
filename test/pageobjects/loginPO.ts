@@ -1,15 +1,15 @@
 class LoginPO{
 
     get enterEmail(): any{
-        return $('//android.widget.EditText[@content-desc="input-email"]')
+        return $('~input-email')
     }
 
     get enterPassword(): any{
-        return $('//android.widget.EditText[@content-desc="input-password"]')
+        return $('~input-password')
     }
 
     get clickLogin():any{
-        return $('//android.view.ViewGroup[@content-desc="button-LOGIN"]/android.view.ViewGroup')
+        return $('(//XCUIElementTypeOther[@name="LOGIN"])[2]')
     }
 
     get successLoginPopUp():any{
@@ -17,7 +17,7 @@ class LoginPO{
     }
 
     get successLoginMessage():any{
-        return $('~android:id/message')
+        return $('//XCUIElementTypeStaticText[@name="Success"]')
     }
 
 }
