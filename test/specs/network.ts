@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {expect} from 'chai';
 
 describe('orientation', ()=>{
@@ -11,4 +12,21 @@ describe('orientation', ()=>{
         
     })
 
+=======
+describe('Login', ()=>{
+
+    it('5. Success Login', async()=>{
+
+        //enable Airplane mode
+        await driver.toggleAirplaneMode();
+
+        // Enable wifi
+        await driver.toggleWiFi();
+
+        //Enable location
+        await driver.toggleLocationServices();
+
+        
+    })
+>>>>>>> c9495dccbb1c8568078191ff04e23c8b166ded85
 })

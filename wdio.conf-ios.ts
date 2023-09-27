@@ -66,11 +66,12 @@ export const config: Options.Testrunner = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         "platformName": "iOS",
-        "appium:deviceName": "i Phone 13",
-        "appium:platformVersion": "17",
+        "appium:deviceName": "iPhone SE (3rd generation)",
+        "appium:platformVersion": "15.5",
         "appium:automationName": "XCUITest",
-        "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
-        "appium:noReset": true
+        "appium:app" : path.join(process.cwd(), 'app/wdioNativeDemoApp.app'),
+        "appium:noReset": true,
+        //"networkConnectionEnabled": true
     }],
 
     //

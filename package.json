@@ -5,8 +5,12 @@
   "main": "wdio.conf.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "wdio": "wdio run ./wdio.conf.ts",
     "wdioI": "wdio run ./wdio.conf-ios.ts",
+=======
+    "wdio": " wdio run ./wdio.conf.ts",
+>>>>>>> c9495dccbb1c8568078191ff04e23c8b166ded85
     "wdioBsI": "wdio run ./wdio.conf-BS-IOS.ts",
     "wdioBsA": "wdio run ./wdio.conf-BS-Android.ts"
   },
