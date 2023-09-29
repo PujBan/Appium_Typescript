@@ -1,4 +1,5 @@
 import bioPO from '../pageobjects/biomatricPO';
+import formPo from '../pageobjects/formPo';
 
 class TestHelpers {
   async waitForElementToDisplayed(
@@ -31,28 +32,27 @@ class TestHelpers {
     }
   }
 
-  async swipe(){
-    const scrollView = $('//XCUIElementTypeStaticText[@name="Swipe horizontal"]')
-    const centerX = scrollView.x + (scrollView.width /2);
-    const startY = scrollView.y + (scrollView.hight *0.9);
-    const endY = scrollView.y 
-     for(let scrolls: number = 0; scrolls<5; scrolls++){
-      await driver.performActions([
-        {
-          type:'pointer',
-          id:'finger1',
-          parameters:{pointerType: 'touch'},
-          actions:[
-            {type: 'pointerMove', duration:0, x:centerX, Y:startY},
-            {type: 'pointerDown', button:0},
-            {type: 'pause', duration:100},
-            {type: 'pointerMove', duration:500, x:centerX, Y:endY},
-            {type: 'pointerUp', button:0},
-          ],
-        },
-      ])
-     }
-  }
+ async scroll(name: string){
+  
+    await driver.execute(
+      "mobile: scroll",
+      {
+        name: name,
+        //direction: direction
+      },
+    );
+ }
+
+ async swipe() {
+  //for (let i=0; i<scrollnumber; i++){
+  await driver.execute("mobile: swipe",
+  {
+    elemntId: await $('~COMPATIBLE').elementId,
+    direction: 'left',
+  
+  });
+//}
+}
 
 
    getDateTimeString(): string {

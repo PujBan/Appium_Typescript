@@ -1,5 +1,7 @@
 import FormPo from '../pageobjects/formPo';
 import {expect} from 'chai';
+import TestHelpers from '../utils/helper'
+import formPo from '../pageobjects/formPo';
 
 describe( "Form Actions", ()=>{
 
@@ -31,34 +33,35 @@ describe( "Form Actions", ()=>{
         await FormPo.switchBtn.click();
 
     })
-    it.only("9. Select value from dropdown", async()=>{
+    it("9. Select value from dropdown", async()=>{
 
-        // Open dropdown
-        await FormPo.dropdown.click();
+        // click on drop down button
+        await formPo.dropdown.click();
 
-        let listView = await $$('//android.widget.CheckedTextView')
-        //await listView.waitForExist();
-
-        // Find child elements within the ListView (e.g., items)
-        const items = listView;
-        await Promise.all(items.map(item => item.waitForExist()));
-        await driver.pause(5000)
-        console.log('Before For loop')
-        // Iterate through the items and perform actions
-        for (const item of items) {
-            console.log('In for loop')
-            const itemText = await item.getText();
-            console.log('DropDown values count:'+ items.length)
-            console.log(`Item Text: ${itemText}`);
+        /*const elements = await $$("XCUIElementTypePickerWheel"); // Locate the element
+        for(let i=0; i<elements.length; i++){
+            console.log('Total elements:', elements.length)
+             // Create a Map with parameters
+        var params = {
+            order: 'next',
+            offset: 0.15,
+            elementId: await elements[i]
+                        //elementId: await $('~')
+          };
+           // Execute the JavaScript command
+        await driver.execute('mobile: selectPickerWheelValue', params);
         }
-        //await FormPo.ddoption2.click();
 
-        // let options = await select.$$('option')
-        // console.log('DropDown values count:'+ options.length)
-        // expect(options.length).to.be.equal(4)
+        const done = $("//XCUIElementTypeOther[@label='Done' and @accessible='true']");
+        (await done).click();*/
+
+        const values = await $("XCUIElementTypePickerWheel"); // Locate the element
+        await values.setValue('Appium is awesome');
+       
+
     })
 
-    it("10.Working with buttons", async()=>{
+    it.only("10.Working with buttons", async()=>{
 
         //const scrollnumber: number = 2;
 
@@ -70,19 +73,39 @@ describe( "Form Actions", ()=>{
           //  ]);
        
         //await (new wd.TouchAction(driver)).press({x:243, y:902}).moveTo({x:272, y:392}).release().perform()
-         await driver.execute('mobile: scroll',{direction: 'down'});
+         await driver.execute('mobile: scroll',
+         {  name:'Buttons',
+            //direction: 'down'
+        });
         // Verify button heading 
         await FormPo.btnTitle.isDisplayed();
+
+        // click on active button
+        await formPo.btnActive.click();
+
+        //pop-up
+        driver.execute('mobile: alert', 
+        {
+        'action': 'dismiss',
+        //'action': 'accept', 
+        'buttonLabel': 'Ask me later'
+        //'buttonLabel': 'OK'
+    });
         
     })
 
-    it.only("11.perform horizontal scroll", async()=>{
+    it("11.perform scroll", async()=>{
 
         // Click on swipe link
         await FormPo.swipeMenu.click();
         //Perform scroll
-         await driver.execute('mobile: scroll',{direction: 'down'});  
-         await driver.execute('mobile: scroll',{direction: 'up'}); 
-   
+         //await driver.execute('mobile: scroll',{direction: 'down'});  
+         //await driver.execute('mobile: scroll',{direction: 'up'}); 
+
+         // Vertical Scroll
+         await TestHelpers.scroll('You found me!!!', )
+         expect (await formPo.foundMe1.isDisplayed()).to.be.true;
+         //driver.execute('mobile: doubleTap', {element: (formPo.foundMe1).value.ELEMENT});
+
     })
 })

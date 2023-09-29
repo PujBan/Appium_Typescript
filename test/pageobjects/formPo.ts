@@ -16,8 +16,11 @@ class FormPo{
     get ddOptions():any{return $$('//XCUIElementTypePicker[@name="Dropdown picker"]/XCUIElementTypePickerWheel')}
     get ddoption2():any{return $('//XCUIElementTypePicker[@name="Dropdown picker"]/XCUIElementTypePickerWheel/XCUIElementTypeOther[2]')}
     get btnTitle():any{return $('Buttons')}
-    get swipeMenu():any{return $('~Swipe')}
-
+    get swipeMenu():any{return $('~Swipe')} 
+    get foundMe():any{return $('~Horizontal scroll bar, 1 page')}
+    get foundMe1():any{return $('//XCUIElementTypeStaticText[@name="You found me!!!"]')}
+    get lastOnSwipe():any{return $('//XCUIElementTypeStaticText[@name="COMPATIBLE"]')}
+    get btnActive():any{return $('//XCUIElementTypeOther[@name="Active"]')}
 
 //XCUIElementTypeOther[@name="Dropdown"]
     

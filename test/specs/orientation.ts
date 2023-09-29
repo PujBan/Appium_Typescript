@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 import LoginPo from '../pageobjects/loginPO'
 import signUpPO from '../pageobjects/signUpPo'
+import TestHelpers from '../utils/helper'
 
 describe('orientation', ()=>{
 
@@ -35,6 +36,9 @@ describe('orientation', ()=>{
         //Click on next in keybaord
         const nextBtn = $('//XCUIElementTypeButton[@name="Next:"]')
         await nextBtn.click();
+
+        //  Perform scroll
+        //await TestHelpers.swipe(LoginPo.enterPassword, 'up')
 
         //Enter Password
         await LoginPo.enterPassword.setValue('Bansari@2206');

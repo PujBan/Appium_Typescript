@@ -26,4 +26,7 @@ describe("Biomatic and drag", ()=>{
         await helper.dragAndDrop();
         expect(await bioPO.congratulationsText.isDisplayed()).to.be.true;
       });
+
+      
+
 })
