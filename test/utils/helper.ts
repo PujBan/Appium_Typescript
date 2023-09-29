@@ -1,27 +1,57 @@
-class TestHelpers {
-  /**
-   * Checks if a toast message with the specified text is displayed on the screen.
-   * This function attempts to find the toast message by inspecting the page source multiple times,
-   * as toast messages might not be immediately available in the DOM when they appear.
-   * The function will pause for a short duration between attempts to give time for the toast
-   * to be fully rendered in the DOM.
-   *
-   * @param {string} toastText - The text of the toast message to check for.
-   * @returns {boolean} - Returns `true` if the toast message is displayed, otherwise `false`.
-   */
-  async isToastMessageDisplayed(toastText: string): Promise<boolean> {
-    const numberOfAttempts = 12; // Adjust the number of attempts as needed
-    const waitTime = 200; // Adjust the wait time between attempts in milliseconds
+import bioPO from '../pageobjects/biomatricPO';
 
-    for (let i = 0; i < numberOfAttempts; i++) {
-      await driver.pause(waitTime);
-      const pageSource = await driver.getPageSource();
-      if (pageSource.includes(toastText)) {
-        console.log(`Toast message displayed ${i + 1}: ${toastText}`);
-        return true;
-      }
+class TestHelpers {
+  async waitForElementToDisplayed(
+    element: WebdriverIO.Element,
+    timeout = 20000
+  ) {
+    await element.waitForDisplayed({ timeout });
+  }
+  async waitForElementAndClick(element: WebdriverIO.Element, timeout = 20000) {
+    await element.waitForDisplayed({ timeout });
+    await element.click();
+  }
+
+  async getEl(selector: string) {
+    const element = await $(selector);
+    return element;
+  }
+ 
+  async dragAndDrop() {
+    const sourceItems: string[] = bioPO.getSourceItems();
+    const targetItems: string[] = bioPO.getTargetItems();
+    for (let i: number = 0; i < sourceItems.length; i++) {
+      const sourceItem = await this.getEl(sourceItems[i]);
+      const targetItem = await this.getEl(targetItems[i]);
+      await driver.execute("gesture: dragAndDrop", {
+        sourceId: sourceItem,
+        destinationId: targetItem,
+      });
+      await driver.pause(200);
     }
-    return false;
+  }
+
+  async swipe(){
+    const scrollView = $('//XCUIElementTypeStaticText[@name="Swipe horizontal"]')
+    const centerX = scrollView.x + (scrollView.width /2);
+    const startY = scrollView.y + (scrollView.hight *0.9);
+    const endY = scrollView.y 
+     for(let scrolls: number = 0; scrolls<5; scrolls++){
+      await driver.performActions([
+        {
+          type:'pointer',
+          id:'finger1',
+          parameters:{pointerType: 'touch'},
+          actions:[
+            {type: 'pointerMove', duration:0, x:centerX, Y:startY},
+            {type: 'pointerDown', button:0},
+            {type: 'pause', duration:100},
+            {type: 'pointerMove', duration:500, x:centerX, Y:endY},
+            {type: 'pointerUp', button:0},
+          ],
+        },
+      ])
+     }
   }
 
 

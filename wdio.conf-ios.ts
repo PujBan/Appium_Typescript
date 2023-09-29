@@ -1,7 +1,6 @@
 import type { Options } from '@wdio/types'
 const path = require('path');
 import { driver } from '@wdio/globals'
-import TestHelpers from './test/utils/helper'
 export const config: Options.Testrunner = {
     //
     // ====================
@@ -35,7 +34,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/network.ts'
+        './test/specs/**/biomatric.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -71,6 +70,7 @@ export const config: Options.Testrunner = {
         "appium:automationName": "XCUITest",
         "appium:app" : path.join(process.cwd(), 'app/wdioNativeDemoApp.app'),
         "appium:noReset": true,
+        "appium:allowTouchIdEnroll": true,
         //"networkConnectionEnabled": true
     }],
 

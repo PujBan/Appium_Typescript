@@ -20,6 +20,9 @@ class LoginPO{
         return $('//XCUIElementTypeStaticText[@name="Success"]')
         //return $('/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.TextView')   
     }
+    get loginOk() {
+        return $("~OK");
+    }
 
 }
 export default new LoginPO();

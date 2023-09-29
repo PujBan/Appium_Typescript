@@ -1,7 +1,7 @@
 import FormPo from '../pageobjects/formPo';
 import {expect} from 'chai';
 
-describe("1. Form Actions", ()=>{
+describe( "Form Actions", ()=>{
 
     beforeEach(async()=>{
         // Navigate to form page
@@ -24,19 +24,22 @@ describe("1. Form Actions", ()=>{
         await driver.pause(5000)
     })
 
+   
     it("8.Switch Toggle button to on", async()=>{
+
         // click on switch toggle
         await FormPo.switchBtn.click();
-    })
 
-    it.skip("9. Select value from dropdown", async()=>{
+    })
+    it.only("9. Select value from dropdown", async()=>{
+
         // Open dropdown
         await FormPo.dropdown.click();
-        let listView = await $$('//XCUIElementTypePicker[@name="Dropdown picker"]/XCUIElementTypePickerWheel')
 
+        let listView = await $$('//android.widget.CheckedTextView')
         //await listView.waitForExist();
-        // Find child elements within the ListView (e.g., items)
 
+        // Find child elements within the ListView (e.g., items)
         const items = listView;
         await Promise.all(items.map(item => item.waitForExist()));
         await driver.pause(5000)
@@ -80,5 +83,6 @@ describe("1. Form Actions", ()=>{
         //Perform scroll
          await driver.execute('mobile: scroll',{direction: 'down'});  
          await driver.execute('mobile: scroll',{direction: 'up'}); 
+   
     })
 })
