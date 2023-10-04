@@ -29,6 +29,7 @@
     "wdio-wait-for": "^3.0.7"
   },
   "dependencies": {
+    "allure-commandline": "^2.24.0",
     "webdriver-manager": "^12.1.9"
   }
 }

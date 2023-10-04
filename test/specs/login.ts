@@ -4,7 +4,7 @@ import { expect } from 'chai';
 
 describe('Login', ()=>{
 
-    it('5. Success Login', async()=>{
+    it.only('5. Success Login', async()=>{
 
         //click on login menu
         await signUpPO.loginMenu.click();
@@ -25,6 +25,7 @@ describe('Login', ()=>{
         //Verify Success Message
         expect (await LoginPo.successLoginMessage.getText()).to.equal('Success')
 
+        driver.execute('mobile: openNotifications');
         
     })
 
@@ -63,5 +64,12 @@ describe('Login', ()=>{
           await radioButton.click();
         }
     })
+    it("Tapping", async()=>{
+        const element = await $('~Login');
+        //await driver.setTimeout({ implicit: 10000 });
+        await driver.touchAction([
+          { action: 'tap', element }
+        ]);      
+    });
 
 })

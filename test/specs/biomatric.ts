@@ -4,7 +4,7 @@ import LoginPO from '../pageobjects/loginPO';
 import helper from '../utils/helper'
 import signUpPO from "../pageobjects/signUpPo";
 
-describe("Biomatic and drag", ()=>{
+describe("Gestures", ()=>{
 
       it("Should login successfully with TouchID", async () => {
         await helper.waitForElementToDisplayed(await signUpPO.loginMenu);
@@ -26,7 +26,17 @@ describe("Biomatic and drag", ()=>{
         await helper.dragAndDrop();
         expect(await bioPO.congratulationsText.isDisplayed()).to.be.true;
       });
+      it("Locations", async () => {
+        
+        // Get current location
+        const location = await driver.getGeoLocation()
+        await console.log('Current Location:', location)
 
+        // Set Location
+        await driver.setGeoLocation({latitude: 121.21, longitude: 11.56, altitude: 94.23});
+        //await driver.setGeoLocation(121.21, 11.56, 10);
+      });
       
 
 })
+

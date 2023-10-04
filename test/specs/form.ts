@@ -5,10 +5,10 @@ import formPo from '../pageobjects/formPo';
 
 describe( "Form Actions", ()=>{
 
-    beforeEach(async()=>{
-        // Navigate to form page
-        await FormPo.formMenu.click();
-    })
+    // beforeEach(async()=>{
+    //     // Navigate to form page
+    //     await FormPo.formMenu.click();
+    // })
 
     it("6.Input Text", async()=>{
 
@@ -61,7 +61,7 @@ describe( "Form Actions", ()=>{
 
     })
 
-    it.only("10.Working with buttons", async()=>{
+    it("10.Working with buttons", async()=>{
 
         //const scrollnumber: number = 2;
 
@@ -94,8 +94,8 @@ describe( "Form Actions", ()=>{
         
     })
 
-    it("11.perform scroll", async()=>{
-
+    it.only("11.perform scroll", async()=>{
+        
         // Click on swipe link
         await FormPo.swipeMenu.click();
         //Perform scroll
@@ -103,9 +103,32 @@ describe( "Form Actions", ()=>{
          //await driver.execute('mobile: scroll',{direction: 'up'}); 
 
          // Vertical Scroll
-         await TestHelpers.scroll('You found me!!!', )
+         await TestHelpers.scroll('You found me!!!')
          expect (await formPo.foundMe1.isDisplayed()).to.be.true;
          //driver.execute('mobile: doubleTap', {element: (formPo.foundMe1).value.ELEMENT});
 
+    })
+    it.only("12. Zoom", async()=>{
+        const element = await $('//XCUIElementTypeOther[@name="WebdriverIO logo"]/XCUIElementTypeImage');
+        await driver.execute('mobile: pinch', {
+            element: element.elementId,
+            scale: 2,// Adjust the scale value as needed
+            velocity: 1.1
+          });
+
+          //FUNCTION DECLARATION         
+        //   async function greet(name?:string):string{
+        //     return  'Hello, ${name}'
+        //   }
+        //   let greeting = greet('bansari');
+        //   await console.log(greeting);
+
+          function test():void{
+            console.log('test');
+          }
+          test();
+
+           
+       
     })
 })

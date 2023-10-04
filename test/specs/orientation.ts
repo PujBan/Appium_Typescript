@@ -1,11 +1,11 @@
 import {expect} from 'chai';
 import LoginPo from '../pageobjects/loginPO'
 import signUpPO from '../pageobjects/signUpPo'
-import TestHelpers from '../utils/helper'
+//import TestHelpers from '../utils/helper'
 
 describe('orientation', ()=>{
 
-    it('12. Change and verify device orientation', async()=>{
+    it.only('12. Change and verify device orientation', async()=>{
 
         // Get the current device orientation
         driver.getOrientation().then(async(currentOrientation)=> {

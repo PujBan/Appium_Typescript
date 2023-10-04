@@ -8,13 +8,13 @@ export const config: Options.Testrunner = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    // autoCompileOpts: {
-    //     autoCompile: true,
-    //     tsNodeOpts: {
-    //         project: './tsconfig.json',
-    //         transpileOnly: true
-    //     }
-    // },
+    autoCompileOpts: {
+        autoCompile: true,
+        tsNodeOpts: {
+            project: './tsconfig.json',
+            transpileOnly: true
+        }
+    },
     
     port: 4723,
     //
@@ -34,7 +34,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/form.ts'
+        './test/specs/**/alerts.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -68,7 +68,7 @@ export const config: Options.Testrunner = {
         "appium:deviceName": "iPhone SE (3rd generation)",
         "appium:platformVersion": "15.5",
         "appium:automationName": "XCUITest",
-        "appium:app" : path.join(process.cwd(), 'app/wdioNativeDemoApp.app'),
+        "appium:app" : path.join(process.cwd(), 'app/UIkitcatalog.ipa'),
         "appium:noReset": true,
         "appium:allowTouchIdEnroll": true,
         //"networkConnectionEnabled": true

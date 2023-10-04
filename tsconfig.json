@@ -25,3 +25,8 @@
     ]
     
 }
+
+//A tsconfig.json file in a directory marks that directory as the root of a TypeScript project. 
+//It provides the compiler options to compile the project.
+
+//npm run wdio --spec test/specs/login.ts
