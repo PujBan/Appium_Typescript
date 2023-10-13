@@ -1,6 +1,7 @@
 import type { Options } from '@wdio/types'
 const path = require('path');
 import { driver } from '@wdio/globals'
+const allure = require('allure-commandline')
 export const config: Options.Testrunner = {
     //
     // ====================
@@ -64,14 +65,26 @@ export const config: Options.Testrunner = {
     //
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
+        // "platformName": "iOS",
+        // "appium:deviceName": "iPhone SE (3rd generation)",
+        // "appium:platformVersion": "15.5",
+        // "appium:automationName": "XCUITest",
+        // "appium:app" : path.join(process.cwd(), 'app/wdioNativeDemoApp.app'),
+        // "appium:noReset": true,
+        // "appium:allowTouchIdEnroll": true,
+        // //"networkConnectionEnabled": true
+
         "platformName": "iOS",
-        "appium:deviceName": "iPhone SE (3rd generation)",
-        "appium:platformVersion": "15.5",
+        "appium:deviceName": "iPhone 6s",
+        "appium:platformVersion": "15.7",
         "appium:automationName": "XCUITest",
-        "appium:app" : path.join(process.cwd(), 'app/wdioNativeDemoApp.app'),
+        "appium:bundleId": "com.example.apple-samplecode.UIKitCatalogY3S8VKG4X6",
         "appium:noReset": true,
         "appium:allowTouchIdEnroll": true,
-        //"networkConnectionEnabled": true
+        "appium:autoAcceptAlerts": false,
+        "appium:xcodeOrgId": "Y3S8VKG4X6",
+        //"appium:xcodesigningId": "iPhone Developer",
+        "appium:udid": "501f2403e05681e0a05d4c3407b1a2c214d4ca54"
     }],
 
     //
@@ -143,7 +156,13 @@ export const config: Options.Testrunner = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    //reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
+    reporters: ['spec',
+    ['allure', 
+    {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
 
     
     //
@@ -296,8 +315,26 @@ export const config: Options.Testrunner = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function(exitCode, config, capabilities, results) {
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', 'allure-results', '--clean'])
+        return new Promise<void>((resolve, reject)=> {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function(exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
