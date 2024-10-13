@@ -1,5 +1,6 @@
 import bioPO from '../pageobjects/biomatricPO';
 import formPo from '../pageobjects/formPo';
+const Excel = require('exceljs');
 
 class TestHelpers {
   async waitForElementToDisplayed(
@@ -69,6 +70,25 @@ class TestHelpers {
   
     return timestamp;
   }
+
+  async readDataFromExcel(filePath:string, sheetName:string) {
+    const workbook = new Excel.Workbook();
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet(sheetName);
+  
+    const data:any = [];
+    worksheet.eachRow((row:any, rowNumber:number) => {
+      if (rowNumber > 1) { // Skip the header row
+        data.push(row.getCell(1).value.toString()); // Assuming the mobile numbers are in the first column
+      } 
+    });
+    return data;
+  }
+  // const filePath = path.join(__dirname, '../data/bansari_login.xlsx');
+  //   const sheetName = 'login';
+
+  //   //Read file
+  //   const mobileNumber= await HelperClass.readDataFromExcel(filePath, sheetName);
 }
 export default new TestHelpers;
 

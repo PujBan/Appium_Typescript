@@ -1,12 +1,15 @@
 import { expect } from "chai";
-import TestHelpers from '../utils/helper'
+//import TestHelpers from '../utils/helper'
 
 describe("Pickers", ()=>{
 
 
     beforeEach(async()=>{
-        // Lunch app
-        await driver.execute('mobile: launchApp', { bundleId: 'com.example.apple-samplecode.UIKitCatalog' });
+        // Lunch app simulator
+        //await driver.execute('mobile: launchApp', { bundleId: 'com.example.apple-samplecode.UIKitCatalog' });
+
+        // Lunch app real device
+        await driver.execute('mobile:launchApp', {bundleId: 'com.example.apple-samplecode.UIKitCatalogY3S8VKG4X6'})
         //Click on back
         const back = await $('//XCUIElementTypeButton[@name="UIKitCatalog"]');
         await back.click();
@@ -91,7 +94,7 @@ describe("Pickers", ()=>{
         const chooseImage = await $('//XCUIElementTypeStaticText[@name="Choose an Image"]')
         await chooseImage.click();
 
-        const element = await $('//XCUIElementTypeImage[@name="Photo, August 09, 2012, 2:59 AM"]')
+        const element = await $('//XCUIElementTypeImage[@name="Live Photo, 05 October, 14:48"]')
        await element.click();
 
        await driver.back();

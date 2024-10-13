@@ -25,7 +25,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/signUp.ts'
+        './test/specs/**/alerts.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -54,14 +54,21 @@ export const config: Options.Testrunner = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local Appium web tests on an Android Emulator
+        // capabilities for browserstack device
         "platformName": "iOS",
-        "appium:deviceName": "i Phone 13",
-        "appium:platformVersion": "17",
+        "appium:deviceName": "iPhone 11 Pro Max",
+        "appium:platformVersion": "16",
         "appium:automationName": "XCUITest",
-        "appium:app" : path.join(process.cwd(), 'app/android/Android-NativeDemoApp-0.4.0.apk'),
         "appium:noReset": true
-    }],
+    },
+    {
+        "platformName": "iOS",
+        "appium:deviceName": "iPhone 11 Pro Max",
+        "appium:platformVersion": "16",
+        "appium:automationName": "XCUITest",
+        "appium:noReset": true
+    },
+],
 
     //
     // ===================
@@ -111,7 +118,16 @@ export const config: Options.Testrunner = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     //services: ['appium'],
-    services: ['browserstack'],
+    services: [
+        [
+            'browserstack',
+            {
+                app: 'bs://f9ba81cdc24e7091d62d6b136e35c3841b08aed0',
+                browserstackLocal: true
+            }
+        ]
+
+],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

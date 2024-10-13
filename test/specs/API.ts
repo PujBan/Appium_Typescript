@@ -4,13 +4,15 @@ import { expect} from 'chai';
 
   // 1. GET Request
   // Define the URL you want to make a request to
-  const apiUrl: string = 'https://reqres.in/api/users/2'; 
+  //const apiUrl: string = 'https://reqres.in/api/users/2'; 
   
   // Create an Axios configuration object 
   const axiosConfig: AxiosRequestConfig = {
     method: 'GET', 
-    url: apiUrl,
-    //headers: headers,
+    url: 'https://reqres.in/api/users/2',
+    headers: {
+      
+    },
   };
   
   // Make the HTTP request using Axios
@@ -31,3 +33,22 @@ import { expect} from 'chai';
       // Handle any errors
       console.error(`Error making API request: ${error}`);
     });
+
+
+
+    //post request
+    const axiosConfig1: AxiosRequestConfig = {
+      method: 'POST', 
+      url: 'https://reqres.in/api/users',
+      data: {
+        "name": "morpheus",
+        "job": "leader"
+      }
+    };
+    axios(axiosConfig1).then((response)=>{
+      console.log('API response', response.data);
+      expect (response.status).to.be.equal(200);
+    }).catch((error)=>{
+
+      console.error(`Error in request: ${error}`)
+    })

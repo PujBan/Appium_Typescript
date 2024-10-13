@@ -2,7 +2,7 @@ import signUpPO from "../pageobjects/signUpPo";
 import { expect } from 'chai';
 describe('Login', ()=>{
 
-    it('1. Network settings', async()=>{
+    it.only('1. Network settings', async()=>{
 
         //enable Airplane mode
         await driver.toggleAirplaneMode();

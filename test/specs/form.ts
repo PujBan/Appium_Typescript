@@ -38,7 +38,7 @@ describe( "Form Actions", ()=>{
         // click on drop down button
         await formPo.dropdown.click();
 
-        /*const elements = await $$("XCUIElementTypePickerWheel"); // Locate the element
+        const elements = await $$("XCUIElementTypePickerWheel"); // Locate the element
         for(let i=0; i<elements.length; i++){
             console.log('Total elements:', elements.length)
              // Create a Map with parameters
@@ -53,10 +53,10 @@ describe( "Form Actions", ()=>{
         }
 
         const done = $("//XCUIElementTypeOther[@label='Done' and @accessible='true']");
-        (await done).click();*/
+        (await done).click();
 
-        const values = await $("XCUIElementTypePickerWheel"); // Locate the element
-        await values.setValue('Appium is awesome');
+        // const values = await $("XCUIElementTypePickerWheel"); // Locate the element
+        // await values.setValue('Appium is awesome');
        
 
     })

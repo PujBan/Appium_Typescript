@@ -26,3 +26,22 @@ class LoginPO{
 
 }
 export default new LoginPO();
+
+
+// class test{
+
+//     private email:any;
+//     private password:string;
+
+//      constructor(){
+//         this.email= '~input-email';
+//         this.password='~input-password';
+//     };
+
+//     async getEmail():Promise<string>{
+//         return this.email
+//     };
+//     async getpasssword():Promise<string>{
+//         return this.password
+//     }
+// }export default new test();

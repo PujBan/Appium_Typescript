@@ -4,7 +4,7 @@ describe("Alerts", () => {
 
     beforeEach(async () => {
         // Lunch app
-        await driver.execute('mobile: launchApp', { bundleId: 'com.example.apple-samplecode.UIKitCatalog' });
+        //await driver.execute('mobile: launchApp', { bundleId: 'com.example.apple-samplecode.UIKitCatalogY3S8VKG4X6' });
         //Click on back
         const back = await $('//XCUIElementTypeButton[@name="UIKitCatalog"]');
         await back.click();
@@ -18,7 +18,6 @@ describe("Alerts", () => {
         const alert = await $('//XCUIElementTypeStaticText[@name="Alert Controllers"]')
         await alert.click();
         expect(await alert.getText()).to.equal('Alert Controllers')
-
     });
 
     it("Simple", async () => {
@@ -34,7 +33,6 @@ describe("Alerts", () => {
         await driver.execute('mobile: alert', {
             action: 'accept',
             buttonLabel: 'OK'
-
         })
     })
 
@@ -58,16 +56,13 @@ describe("Alerts", () => {
         await driver.execute('mobile: alert', {
             action: 'accept',
             buttonLabel: 'OK'
-
         })
         //dismiss
         await okCancel.click();
         await driver.execute('mobile: alert', {
             action: 'dismiss',
             //buttonLabel: 'OK'
-
         })
-
     });
 
     it("3Buttons", async () => {
@@ -83,16 +78,12 @@ describe("Alerts", () => {
         await driver.execute('mobile: alert', {
             action: 'accept',
             buttonLabel: 'Choice One'
-
         })
-
         await Buttons.click();
         await driver.execute('mobile: alert', {
             action: 'accept',
             buttonLabel: 'Choice Two'
-
         })
-
         //dismiss
         await Buttons.click();
         await driver.execute('mobile: alert', {
@@ -120,13 +111,11 @@ describe("Alerts", () => {
         await driver.execute('mobile: alert', {
             action: 'accept',
             //buttonLabel: 'OK'
-
         })
         //dismiss
         await sheet.click();
         await driver.execute('mobile: alert', {
             action: 'dismiss',
-
         })
     });
     it("Action sheet destructive", async () => {
@@ -148,9 +137,7 @@ describe("Alerts", () => {
         //accept
         await driver.execute('mobile: alert', {
             action: 'accept',
-            buttonLabel: 'Safe Choice'
-            //should click on safe
-
+            buttonLabel: 'Safe Choice' //should click on safe
         })
         //dismiss
         try{
@@ -165,9 +152,8 @@ describe("Alerts", () => {
         }
     });
 
-    afterEach(async () => {
-        // Terminate app
-        await driver.execute('mobile: terminateApp', { bundleId: 'com.example.apple-samplecode.UIKitCatalog' });
-
-    });
+    // afterEach(async () => {
+    //     // Terminate app
+    //     await driver.execute('mobile: terminateApp', { bundleId: 'com.example.apple-samplecode.UIKitCatalogY3S8VKG4X6' });
+    // });
 });
